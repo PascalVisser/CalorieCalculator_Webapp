@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
 
-@WebServlet(name = "WelcomeServlet", urlPatterns = "/welcome", loadOnStartup = 1)
+@WebServlet(name = "WelcomeServlet", urlPatterns = {"/home", "/food_input"}, loadOnStartup = 1)
 public class WelcomeServlet extends HttpServlet {
 
     @Override
@@ -40,8 +40,7 @@ public class WelcomeServlet extends HttpServlet {
                 response,
                 request.getServletContext(),
                 request.getLocale());
-        ctx.setVariable("currentDate", new Date());
         WebConfig.createTemplateEngine(getServletContext()).
-                process("welcome", ctx, response.getWriter());
+                process("home", ctx, response.getWriter());
     }
 }
