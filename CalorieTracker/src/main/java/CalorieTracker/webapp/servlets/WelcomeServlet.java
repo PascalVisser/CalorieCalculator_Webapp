@@ -9,9 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.Serial;
 import java.util.Date;
 
-@WebServlet(name = "WelcomeServlet", urlPatterns = {"/home", "/food_input"}, loadOnStartup = 1)
+@WebServlet(name = "WelcomeServlet", urlPatterns = {"/home"}, loadOnStartup = 1)
 public class WelcomeServlet extends HttpServlet {
 
     @Override
@@ -21,13 +22,14 @@ public class WelcomeServlet extends HttpServlet {
         WebConfig.createTemplateEngine(servletContext);
     }
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         process(request, response);
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException{
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         process(request, response);
     }
 
@@ -43,4 +45,5 @@ public class WelcomeServlet extends HttpServlet {
         WebConfig.createTemplateEngine(getServletContext()).
                 process("home", ctx, response.getWriter());
     }
+
 }
