@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
         <meta charset="UTF-8">
@@ -24,21 +24,16 @@
         <input type="submit" value="Add" onclick="insert()" id="add"><br><br>
         <div id="display"></div><br>
 
-    <form action="tracker.html">
-        <input type="submit", value="Submit"><br>
+    <form th:action="@{tracker}">
+        <input type="submit" value="Submit"><br>
     </form>
 
     <br>
+    <br>
 
-    <button><a href="home.html">Back</a></button><br>
-
-    <form>
-        <label for="name">Enter your name: </label>
-        <input type="text" name="name" id="name" required>
-    </form>
+    <button><a th:href="@{home}">Back</a></button><br>
 
 
-    <----- gggg -->
     <script type="text/javascript">
         var titles  = [];
         var titleInput  = document.getElementById("food");

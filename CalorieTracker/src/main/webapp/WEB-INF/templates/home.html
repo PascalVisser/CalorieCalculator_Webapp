@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
         <meta charset="UTF-8">
@@ -16,17 +16,22 @@
         Here you can log in to gain access to the Calorie Tracker web app.
     </p><br>
 
-    <form action="food_input.html">
+    <form th:action="@{food_input}">
+
+
         <label for="user">Username:</label>
         <input type="text" id="user" name="username"><br><br>
+
         <label for="password">Password:&nbsp;</label>
         <input type="password" id="password" name="password"><br><br>
-        <label><input type="checkbox" onclick="myFunction()"></label>Show Password<br><br>
+
+        <label><input type="checkbox" onclick="showPassword()"></label>Show Password<br><br>
         <input type="submit" value="Submit">
     </form>
 
+
     <script>
-        function myFunction() {
+        function showPassword() {
             const x = document.getElementById("password");
             if (x.type === "password") {
                 x.type = "text";
@@ -34,8 +39,6 @@
                 x.type = "password";
             }
         }
-
-
     </script>
 
     </body>
