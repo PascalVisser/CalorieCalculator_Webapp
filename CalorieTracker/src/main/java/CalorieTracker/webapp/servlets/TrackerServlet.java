@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Serial;
-import java.util.Date;
 
 @WebServlet(name = "TrackerServlet", urlPatterns = {"/tracker"}, loadOnStartup = 1)
 public class TrackerServlet extends HttpServlet {

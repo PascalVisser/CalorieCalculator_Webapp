@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Serial;
-import java.util.Date;
 
 @WebServlet(name = "WelcomeServlet", urlPatterns = {"/home"}, loadOnStartup = 1)
 public class WelcomeServlet extends HttpServlet {
@@ -25,9 +25,16 @@ public class WelcomeServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        process(request, response);
-    }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        }
+
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         process(request, response);
