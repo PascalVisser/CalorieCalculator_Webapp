@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <title>Home</title>
     </head>
 
@@ -16,24 +16,15 @@
         Here you can log in to gain access to the Calorie Tracker web app.
     </p>
 
-    <p>
-        Log in with the following information:<br>
-    </p>
-    <ul>
-        <li>Username = gast</li>
-        <li>Password &nbsp;= Welkom</li>
-    </ul><br>
 
-    <form onsubmit="return verifyUser()" th:action="@{food_input}" method="post">
 
+    <form method="POST">
 
         <label for="user">Username:</label>
-        <input type="text" id="user" name="username">
-        <span id="message1" style="color:red"> </span> <br><br>
+        <input type="text" id="user" name="username"><br><br>
 
         <label for="psw"> Password:&nbsp;</label>
-        <input type="password" id="psw" value="">
-        <span id="message2" style="color:red"> </span> <br><br>
+        <input type="password" id="psw" value="" name="password"><br><br>
 
         <label><input type="checkbox" onclick="showPassword()"></label>Show Password<br><br>
         <input type = "submit" value ="Login" id="submit">&nbsp;&nbsp;&nbsp;
@@ -41,6 +32,9 @@
 
     </form>
 
+    <p th:text="${ErrorMessage}">
+        show message: </p>
+    <p>jfvhduitbf</p>
 
     <script type="text/javascript" th:inline="javascript">
         function showPassword() {
@@ -51,43 +45,6 @@
                 x.type = "password";
             }
         }
-
-        function verifyUser() {
-            var pw = document.getElementById("psw").value;
-            var user = document.getElementById("user").value;
-
-            //check empty username field
-            if (user === "") {
-                document.getElementById("message1").innerHTML = "Fill in a username please!";
-                return false;
-            }
-            if (user !== "gast") {
-                document.getElementById("message1").innerHTML = "Username is unknown"
-                return false;
-            } else {
-                var y = true
-            }
-
-            //check empty password field
-            if (pw === "") {
-                document.getElementById("message2").innerHTML = "Fill in a password please!";
-                return false;
-            }
-            //password validation
-            if (pw !== "Welkom") {
-                document.getElementById("message2").innerHTML = "Password is incorrect";
-                return false;
-            } else {
-                var x = true;
-            }
-            // if username and password are correct, send message
-            if (x && y === true) {
-                alert("Successfully logged in!")
-            }
-
-        }
     </script>
-
     </body>
-
 </html>
