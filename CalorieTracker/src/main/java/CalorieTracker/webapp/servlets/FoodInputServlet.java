@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Serial;
 
-@WebServlet(name = "FoodInputServlet", urlPatterns = {"/food_input"}, loadOnStartup = 1)
+@WebServlet(name = "FoodInputServlet", loadOnStartup = 1)
 public class FoodInputServlet extends HttpServlet {
 
     @Override
