@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serial;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 @WebServlet(name = "WelcomeServlet", loadOnStartup = 1)
 public class WelcomeServlet extends HttpServlet {
@@ -39,8 +41,8 @@ public class WelcomeServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         try {
-
-            if(Validate.checkUser(username, password))
+            Connection conn = Validate.DBConnect();
+            if(Validate.CheckUser(username, password, conn))
             {
                 RequestDispatcher rd = request.getRequestDispatcher("food_input");
                 rd.forward(request, response);
@@ -49,7 +51,7 @@ public class WelcomeServlet extends HttpServlet {
             {
                 out.print("Error, wrong username and/or password!");
             }
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
         process(request, response);
