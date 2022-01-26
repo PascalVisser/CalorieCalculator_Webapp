@@ -21,7 +21,7 @@ public class WelcomeServlet extends HttpServlet {
 
     @Override
     public void init() {
-        System.out.println("Initializing Thymeleaf template engine");
+        System.out.println("[home] Initializing Thymeleaf template engine");
         final ServletContext servletContext = this.getServletContext();
         WebConfig.createTemplateEngine(servletContext);
     }
@@ -35,12 +35,6 @@ public class WelcomeServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        WebContext ctx = new WebContext(
-                request,
-                response,
-                request.getServletContext(),
-                request.getLocale());
-
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
@@ -53,9 +47,7 @@ public class WelcomeServlet extends HttpServlet {
             }
             else
             {
-                System.out.println("check1");
-                ctx.setVariable("ErrorMessage", "Error, wrong username and/or password!");
-                System.out.println("check2");
+                out.print("Error, wrong username and/or password!");
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

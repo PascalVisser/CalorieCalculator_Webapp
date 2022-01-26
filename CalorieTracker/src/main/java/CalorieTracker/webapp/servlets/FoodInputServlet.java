@@ -16,7 +16,7 @@ public class FoodInputServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        System.out.println("Initializing Thymeleaf template engine");
+        System.out.println("[Food_input] Initializing Thymeleaf template engine");
         final ServletContext servletContext = this.getServletContext();
         WebConfig.createTemplateEngine(servletContext);
     }
