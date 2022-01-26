@@ -4,11 +4,10 @@ import java.sql.*;
 
 public class Validate {
 
-    public static boolean checkUser(String username, String password) throws ClassNotFoundException {
+    public static Connection DBConnect () throws ClassNotFoundException, SQLException {
 
-        boolean userValid = false;
         Connection conn = null;
-        try {
+
             //loading drivers for mysql
             Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -20,28 +19,24 @@ public class Validate {
 
             System.out.println("Connected to the database!");
 
-            PreparedStatement ps = conn.prepareStatement("select * from userdetails where Username=? and Password=?");
-            ps.setString(1, username);
-            ps.setString(2, password);
-            ResultSet rs = ps.executeQuery();
-            userValid = rs.next();
+        return conn;
+    }
 
-            System.out.println("Password input correct? = " + userValid);
+    public static boolean CheckUser (String username, String password,
+                                     Connection connect) throws SQLException {
 
-        } catch (SQLException e) {
-            throw new Error("Problem", e);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
-        }
+        boolean userValid = false;
+
+        PreparedStatement ps = connect.prepareStatement
+                ("select * from userdetails where Username=? and Password=?");
+
+        ps.setString(1, username);
+        ps.setString(2, password);
+        ResultSet rs = ps.executeQuery();
+        userValid = rs.next();
+
+        System.out.println("Password input correct? = " + userValid);
 
         return userValid;
-        }
     }
+}
