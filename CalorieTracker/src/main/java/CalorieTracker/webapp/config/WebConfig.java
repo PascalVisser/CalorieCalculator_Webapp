@@ -1,11 +1,8 @@
 package CalorieTracker.webapp.config;
 
-import CalorieTracker.webapp.dao.DatabaseException;
-import CalorieTracker.webapp.dao.MyAppDaoFactory;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -25,12 +22,6 @@ public class WebConfig implements ServletContextListener {
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         System.out.println("[WebConfig] Initializing template engine");
         createTemplateEngine(servletContextEvent.getServletContext());
-
-        try {
-            MyAppDaoFactory.initializeDataSource();
-        } catch (DatabaseException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
