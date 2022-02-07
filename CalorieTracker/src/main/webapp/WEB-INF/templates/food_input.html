@@ -3,70 +3,37 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>FoodInput</title>
+        <title>Food Input</title>
     </head>
 
     <body>
-    <header>
-        <h1>Food Input</h1>
-    </header>
 
-    <p>
-        This is the input section. <br>
-        Here you can input the consumed food.
-    </p>
+    <form method="POST" action="food_input" id="input_form">
 
+        <p>Food:</p>
+        <label>
+            <input type="text" name="food"/>
+        </label>
+        <br>
 
-        <label for="food">Food:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="text" id="food" name="inputfood" onkeyup="Allow"><br><br>
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity"><br><br>
-        <input type="submit" value="Add" onclick="insert()" id="add"><br><br>
-        <div id="display"></div><br>
+        <p>Quantity:</p>
+        <label>
+            <input type="text" name="quantity">
+        </label>
+        <br><br>
 
-    <form th:action="@{tracker}">
-        <input type="submit" value="Submit"><br>
+        <input type="submit" value="Add"/>
+        <br><br>
+
     </form>
 
-    <br>
-    <br>
 
+    <br><br>
+
+    <button><a th:href="@{tracker}">To Dashboard</a></button>
+    <br><br>
     <button><a th:href="@{home}">Logout</a></button><br>
 
-
-    <script type="text/javascript">
-        const titles = [];
-        const titleInput = document.getElementById("food");
-        const messageBox = document.getElementById("display");
-
-        function Allow(){
-            if (user.title.value !== "" && !user.title.value.match(/[a-zA-Z]$/)) {
-                user.title.value="";
-                alert("Please Enter only alphabets");
-            }
-        }
-
-        function insert () {
-            titles.push(titleInput.value);
-            clearAndShow();
-        }
-
-        function clearAndShow () {
-            titleInput.value = "";
-            messageBox.innerHTML = "";
-            messageBox.innerHTML += titles.join(", ") + "<br/>";
-        }
-
-        document.getElementById("name")
-            .addEventListener('keyup', function(event) {
-                if (event.code === 'Enter')
-                {
-                    event.preventDefault();
-                    document.querySelector('form').submit();
-                }
-            });
-    </script>
     </body>
-
 
 </html>
