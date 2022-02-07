@@ -1,4 +1,4 @@
-package CalorieTracker.webapp.model;
+package CalorieTracker.webapp.Database_IC;
 
 import java.sql.*;
 
