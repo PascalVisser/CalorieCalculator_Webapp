@@ -8,9 +8,6 @@ import java.util.Objects;
 
 public class EmptyDB {
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        EmptyDatabase("True");
-    }
 
     public static void EmptyDatabase (String check) throws SQLException, ClassNotFoundException {
 
