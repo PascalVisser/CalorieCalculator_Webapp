@@ -1,8 +1,7 @@
 package CalorieTracker.webapp.servlets;
 
 import CalorieTracker.webapp.config.WebConfig;
-import CalorieTracker.webapp.model.Validate;
-import com.mysql.cj.protocol.x.XMessage;
+import CalorieTracker.webapp.Database_IC.Validate;
 import org.thymeleaf.context.WebContext;
 
 import javax.servlet.RequestDispatcher;
@@ -18,7 +17,7 @@ import java.io.Serial;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-@WebServlet(name = "WelcomeServlet", loadOnStartup = 1)
+@WebServlet(name = "WelcomeServlet", urlPatterns = "/home", loadOnStartup = 1)
 public class WelcomeServlet extends HttpServlet {
 
     @Override
@@ -33,6 +32,7 @@ public class WelcomeServlet extends HttpServlet {
 
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        System.out.println("POST request for /home is executed");
 
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
@@ -44,7 +44,7 @@ public class WelcomeServlet extends HttpServlet {
             Connection conn = Validate.DBConnect();
             if(Validate.CheckUser(username, password, conn))
             {
-                RequestDispatcher rd = request.getRequestDispatcher("food_input");
+                RequestDispatcher rd = request.getRequestDispatcher("/food_input");
                 rd.forward(request, response);
             }
             else
@@ -58,6 +58,7 @@ public class WelcomeServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        System.out.println("GET request for /home is executed");
         process(request, response);
     }
 

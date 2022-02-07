@@ -1,6 +1,7 @@
 package CalorieTracker.webapp.servlets;
 
 import CalorieTracker.webapp.config.WebConfig;
+import CalorieTracker.webapp.Database_IC.EmptyDB;
 import org.thymeleaf.context.WebContext;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -10,8 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Serial;
+import java.sql.SQLException;
 
-@WebServlet(name = "TrackerServlet", urlPatterns = {"/tracker"}, loadOnStartup = 1)
+@WebServlet(name = "TrackerServlet", urlPatterns = "/tracker")
 public class TrackerServlet extends HttpServlet {
 
     @Override
@@ -25,10 +27,21 @@ public class TrackerServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        System.out.println("POST request for /tracker is executed");
+
+
+        try {
+            String delete_check = request.getParameter("delete");
+            EmptyDB.EmptyDatabase(delete_check);
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         process(request, response);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        System.out.println("POST request for /tracker is executed");
         process(request, response);
     }
 
