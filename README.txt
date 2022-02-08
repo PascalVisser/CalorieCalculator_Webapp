@@ -1,19 +1,30 @@
 Author: Pascal Visser/Ewoud ooms
+
 Date: 07-02-2022
 Version: 1.0
 
 
-Calorie WEB APP Tracker
+## Calorie WEB APP Tracker ########################################################################################################################
 
 
 
-Description:
+# Description:
 
-This is a calorie tracker app. This app lets you register you food intake for the day.
+This is a calorie tracker app. This app lets you register your nutrient intake for the day.
 
 
+# Usage
 
-Installation Prerequisites:
+Login with the following information:
+
+username: Pascal/Ewoud
+password: Visser/Ooms
+
+Then you can enter food products into the database and specify the quantitiy.
+Next you are forwarded to the dashboard, where you can see all the nutrients of the intake food. 
+ 
+
+# Installation Prerequisites:
 
 IntelliJ Idea
 
@@ -23,11 +34,11 @@ Chose the version for your Operating system
 
 Tomcat
 
-To start working with web app, you have to get a server runtime. This project uses Tomcat, version 9.0.58
+To start working with web app, you must get a server runtime. This project uses Tomcat, version 9.0.58
 To use tomcat:
 
 - Go to https://tomcat.apache.org/ and download version 9.0.58 as a .zip file, which is suitable for use OS. 
-- Extract the .zip in a suitable location and make it executable. (to test, go to http://localhost:8080/ and you should see the Tomcat management page)
+- Extract the .zip in a suitable location and make it executable. (To test, go to http://localhost:8080/ and you should see the Tomcat management page)
 
 
 Config Tomcat:
@@ -36,17 +47,17 @@ To make Tomcat working, follow the following steps:
 
 - In IntelliJ, go to File > Settings > Build, Execution, Deployment > Application Servers and with the top-left plus sign, add Tomcat server. 
 - With the tomcat server added, in Run/Debug Configurations, set URL to http://localhost:8080/index 
-- Under deployment, At the bottem set Application context to: /
+- Under deployment, At the bottom set Application context to: /
 
-Now the IntelliJ project is configuerd.
+Now the IntelliJ project is configured.
 
-The minimum requairement for Java = JDK 14+
+The minimum requirement for Java = JDK 14+
 
 
 
-Database Tunnel:
+# Database Tunnel:
 
-The web app makes useage of a remote database from storage and login. To access the database the following step need to be made:
+The web app makes usage of a remote database from storage and login. To access the database the following steps need to be made:
 
 Windows:
 
@@ -66,28 +77,22 @@ In the terminal
 
 With no errors or messages, it is good. 
 
-This tunnel need to be open before running the web app, otherwise the database interaction will fail. 
+This tunnel needs to be open before running the web app, otherwise the database interaction will fail. 
 
 
 
-The Databse:
 
-The database exisit of the following schemas:
+# Possible issues:
 
-_nog aanvullen_
+if in the AutoComplete.jp errors are thrown at Asyc/await. Do the following:
 
-
-
-Possible issues:
-
-if in the AutoComplete.jp errors are trown at Asyc/await. Do the following:
-
-- In IntelliJ go to File > Settings > Lauguages & Frameworks > JavaScript
-- Set JavaScript lauguage versionto ECMAScript 6+
-- Enable everyting in libaries
-- Webpack need to be set on automtically 
+- In IntelliJ go to File > Settings > Languages & Frameworks > JavaScript
+- Set JavaScript language version to ECMAScript 6+
+- Enable everything in libraries
+- Webpack need to be set on automatically 
 
 
-Support:
+# Support:
 
-All other questions can be email to p.visser@st.hanze.nl or e.ooms@st.hanze.nl
+All other questions can be emailed to p.visser@st.hanze.nl or e.ooms@st.hanze.nl
+
