@@ -41,7 +41,7 @@ public class FoodInputServlet extends HttpServlet {
 
         System.out.println("POST request for /food_input is executed");
 
-        try {
+        /*try {
                 // Connect to the database
                 Connection con = Validate.DBConnect();
 
@@ -71,7 +71,7 @@ public class FoodInputServlet extends HttpServlet {
             }
             catch (Exception e) {
                 e.printStackTrace();
-            }
+            } */
 
         process(request, response);
     }

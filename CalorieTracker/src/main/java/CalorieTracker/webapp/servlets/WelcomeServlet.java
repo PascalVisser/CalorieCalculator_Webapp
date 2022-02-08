@@ -42,19 +42,22 @@ public class WelcomeServlet extends HttpServlet {
 
         try {
             Connection conn = Validate.DBConnect();
-            if(Validate.CheckUser(username, password, conn))
-            {
-                RequestDispatcher rd = request.getRequestDispatcher("/food_input");
-                rd.forward(request, response);
-            }
-            else
-            {
+            if (Validate.CheckUser(username, password, conn)) {
+                WebConfig.configureResponse(response);
+                WebContext ctx = new WebContext(
+                        request,
+                        response,
+                        request.getServletContext(),
+                        request.getLocale());
+                WebConfig.createTemplateEngine(getServletContext()).
+                        process("food_input", ctx, response.getWriter());
+            } else {
                 out.print("Error, wrong username and/or password!");
-            }
+            process(request, response);
+        }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-        process(request, response);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {

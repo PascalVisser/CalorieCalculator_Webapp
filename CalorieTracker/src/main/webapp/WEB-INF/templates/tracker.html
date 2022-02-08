@@ -1,30 +1,153 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Calorie Tracker</title>
-    </head>
+<head th:fragment="headerFragment">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <body>
-    <header>
-        <h1>Calorie Tracker</h1>
-    </header>
+    <title>CalorieCalculator</title>
 
-    <p>This is the calorie tracker dashboard<br>
-        Here you can see the amount of nutrients intake.</p>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
 
 
-    <form action="" method="post">
-        <input type="hidden" name="delete" value="True">
-        <input type="submit" value="Delete Records">
-    </form>
-    <br><br>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+
+    <link   rel="stylesheet"
+            th:href="@{/css/style.css}"
+            href="../../css/style.css"
+    />
+</head>
+
+<body>
+<section>
+    <div th:fragment="background">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Calorie calculator</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarsExample03">
+                    <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" th:href="@{index}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{home}">login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{food_input}">Food Input</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{tracker}">Overview</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</section>
+
+<section>
+    <div class="Bg-image">
+        <img th:src="@{/images/food-background.jpeg}" src="../../images/food-background.jpeg" alt="background pic" style="width:100%;">
+        <div class="Bg-overlay">
+            <span id="result"></span>
+            <p>Your voedingswaarden van </p>
+            <canvas id="myChart"></canvas>
+            <canvas id="myChart2"></canvas>
+
+            <button><a th:href="@{food_input}">Back</a></button><br><br>
+            <button><a th:href="@{home}">Logout</a></button><br><br>
+        </div>
+    </div>
+</section>
+
+<script src="../../js/Tracker.js"></script>
 
 
-    <button><a th:href="@{food_input}">Back</a></button><br><br>
-    <button><a th:href="@{home}">Logout</a> </button>
-    </body>
+<script>
+    // charts
+    console.log(StorageCtrl.CheckForItem());
+    const json = localStorage.getItem('items');
+    const parseJson = JSON.parse(json);
 
+    let myChart1 = document.getElementById('myChart').getContext('2d');
+
+    let labels = ['protein', 'fat', 'SaternadedFat', 'sugar', 'fiber'];
+
+    let colorHex = ['#FB3640', '#EFCA08', '#43AA8B', '#253D5B', '#F033FF', '#060606', '#FFFFFF']
+
+    let Protein = StorageCtrl.CheckForItem0().protien+StorageCtrl.CheckForItem().protien+StorageCtrl.CheckForItem2().protien+StorageCtrl.CheckForItem3().protien+StorageCtrl.CheckForItem4().protien;
+    let Fat = StorageCtrl.CheckForItem0().fat+StorageCtrl.CheckForItem().fat+StorageCtrl.CheckForItem2().fat+StorageCtrl.CheckForItem3().fat+StorageCtrl.CheckForItem4().fat;
+    let FatSat = StorageCtrl.CheckForItem0().fasat+StorageCtrl.CheckForItem().fasat+StorageCtrl.CheckForItem2().fasat+StorageCtrl.CheckForItem3().fasat+StorageCtrl.CheckForItem4().fasat;
+    let sugar = StorageCtrl.CheckForItem0().sugar+StorageCtrl.CheckForItem().sugar+StorageCtrl.CheckForItem2().sugar+StorageCtrl.CheckForItem3().sugar+StorageCtrl.CheckForItem4().sugar;
+    let Fiber = StorageCtrl.CheckForItem0().fiber+StorageCtrl.CheckForItem().fiber+StorageCtrl.CheckForItem2().fiber+StorageCtrl.CheckForItem3().fiber+StorageCtrl.CheckForItem4().fiber;
+
+
+    let chart1 = new Chart(myChart1, {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                data: [Protein, Fat, FatSat, sugar, Fiber],
+                backgroundColor : colorHex
+            }],
+
+        },
+        options: {
+            responsive: false
+        }
+
+    });
+
+    let myChart2 = document.getElementById('myChart2').getContext('2d');
+
+    let labels2 = ['Kcal','kJ'];
+    let colorHex2 = ['#FB3640', '#EFCA08']
+
+    let kcal = StorageCtrl.CheckForItem0().kcal+StorageCtrl.CheckForItem().kcal+StorageCtrl.CheckForItem2().kcal+StorageCtrl.CheckForItem3().kcal+StorageCtrl.CheckForItem4().kcal;
+    let kJ = StorageCtrl.CheckForItem0().kj+StorageCtrl.CheckForItem().kj+StorageCtrl.CheckForItem2().kj+StorageCtrl.CheckForItem3().kj+StorageCtrl.CheckForItem4().kj;
+
+    let chart2 = new Chart(myChart2, {
+        type: 'pie',
+        data: {
+            labels: labels2,
+            datasets: [{
+                data: [kcal, kJ],
+                backgroundColor : colorHex2
+            }],
+        },
+        options: {
+            responsive: false
+        }
+
+    });
+
+</script>
+
+<script>
+
+
+
+</script>
+
+
+
+
+
+</body>
 
 </html>
