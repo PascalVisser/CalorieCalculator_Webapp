@@ -190,6 +190,9 @@ docs/
 # translation temp files
 po/*~
 
+# macos specific
+.DS_Store
+
 ### R.Bookdown Stack ###
 # R package: bookdown caching files
 /*_files/
