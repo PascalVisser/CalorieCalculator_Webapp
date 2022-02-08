@@ -29,7 +29,7 @@ public class WebConfig implements ServletContextListener {
         System.out.println("Shutting down!");
     }
 
-  public static TemplateEngine createTemplateEngine(ServletContext servletContext) {
+    public static TemplateEngine createTemplateEngine(ServletContext servletContext) {
         ServletContextTemplateResolver templateResolver =
                 new ServletContextTemplateResolver(servletContext);
         templateResolver.setTemplateMode("HTML");
