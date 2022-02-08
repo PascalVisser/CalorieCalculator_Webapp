@@ -42,36 +42,36 @@ public class FoodInputServlet extends HttpServlet {
         System.out.println("POST request for /food_input is executed");
 
         try {
-                // Connect to the database
-                Connection con = Validate.DBConnect();
+            // Connect to the database
+            Connection con = Validate.DBConnect();
 
-                // Create a SQL query to insert data into demo table
-                PreparedStatement st = con
-                        .prepareStatement("insert into test_input (item, quantity) values(?, ?)");
+            // Create a SQL query to insert data into demo table
+            PreparedStatement st = con
+                    .prepareStatement("insert into test_input (item, quantity) values(?, ?)");
 
-                // For the first parameter,
-                // get the data using request object
-                // sets the data to st pointer
-                st.setString(1, request.getParameter("food"));
-                st.setString(2, request.getParameter("quantity"));
+            // For the first parameter,
+            // get the data using request object
+            // sets the data to st pointer
+            st.setString(1, request.getParameter("food"));
+            st.setString(2, request.getParameter("quantity"));
 
-                // Execute the insert command using executeUpdate()
-                // to make changes in database
-                st.executeUpdate();
+            // Execute the insert command using executeUpdate()
+            // to make changes in database
+            st.executeUpdate();
 
-                // Close all the connections
-                st.close();
-                con.close();
+            // Close all the connections
+            st.close();
+            con.close();
 
-                // Get a writer pointer
-                // to display the successful result
-                PrintWriter out = response.getWriter();
-                out.println("<html><body><b>Successfully Inserted"
-                        + "</b></body></html>");
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
+            // Get a writer pointer
+            // to display the successful result
+            PrintWriter out = response.getWriter();
+            out.println("<html><body><b>Successfully Inserted"
+                    + "</b></body></html>");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
 
         process(request, response);
     }
