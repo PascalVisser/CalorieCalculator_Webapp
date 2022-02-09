@@ -74,7 +74,8 @@ const StorageCtrl = (function (){
                     fat: (parseFloat(items[0].FAT_g)),
                     fasat: (parseFloat(items[0].FASAT_g)),
                     sugar: (parseFloat(items[0].SUGAR_g)),
-                    fiber: (parseFloat(items[0].FIBT_g))
+                    fiber: (parseFloat(items[0].FIBT_g)),
+                    quanti: (parseFloat(items[0].quanti))
                 }
             } else {
                 items = {
@@ -86,7 +87,8 @@ const StorageCtrl = (function (){
                     fat: 0,
                     fasat: 0,
                     sugar: 0,
-                    fiber: 0
+                    fiber: 0,
+                    quanti: 0
                 }
             }
             return items;
@@ -106,7 +108,8 @@ const StorageCtrl = (function (){
                     fat: (parseFloat(items[1][0].FAT_g)),
                     fasat: (parseFloat(items[1][0].FASAT_g)),
                     sugar: (parseFloat(items[1][0].SUGAR_g)),
-                    fiber: (parseFloat(items[1][0].FIBT_g))
+                    fiber: (parseFloat(items[1][0].FIBT_g)),
+                    quanti: (parseFloat(items[1][0].quanti))
                 }
             } else {
                 items = {
@@ -119,6 +122,7 @@ const StorageCtrl = (function (){
                     fasat: 0,
                     sugar: 0,
                     fiber: 0,
+                    quanti: 0
                 }
             }
             return items;
@@ -138,7 +142,8 @@ const StorageCtrl = (function (){
                     fat: (parseFloat(items[2][0].FAT_g)),
                     fasat: (parseFloat(items[2][0].FASAT_g)),
                     sugar: (parseFloat(items[2][0].SUGAR_g)),
-                    fiber: (parseFloat(items[2][0].FIBT_g))
+                    fiber: (parseFloat(items[2][0].FIBT_g)),
+                    quanti: (parseFloat(items[2][0].quanti))
                 }
             } else {
                 items = {
@@ -151,6 +156,7 @@ const StorageCtrl = (function (){
                     fasat: 0,
                     sugar: 0,
                     fiber: 0,
+                    quanti: 0
                 }
             }
             return items;
@@ -170,7 +176,8 @@ const StorageCtrl = (function (){
                     fat: (parseFloat(items[3][0].FAT_g)),
                     fasat: (parseFloat(items[3][0].FASAT_g)),
                     sugar: (parseFloat(items[3][0].SUGAR_g)),
-                    fiber: (parseFloat(items[3][0].FIBT_g))
+                    fiber: (parseFloat(items[3][0].FIBT_g)),
+                    quanti: (parseFloat(items[3][0].quanti))
                 }
             } else {
                 items = {
@@ -183,6 +190,7 @@ const StorageCtrl = (function (){
                     fasat: 0,
                     sugar: 0,
                     fiber: 0,
+                    quanti: 0
                 }
             }
             return items;
@@ -202,7 +210,8 @@ const StorageCtrl = (function (){
                     fat: (parseFloat(items[4][0].FAT_g)),
                     fasat: (parseFloat(items[4][0].FASAT_g)),
                     sugar: (parseFloat(items[4][0].SUGAR_g)),
-                    fiber: (parseFloat(items[4][0].FIBT_g))
+                    fiber: (parseFloat(items[4][0].FIBT_g)),
+                    quanti: (parseFloat(items[4][0].quanti))
                 }
             } else {
                 items = {
@@ -214,7 +223,178 @@ const StorageCtrl = (function (){
                     fat: 0,
                     fasat: 0,
                     sugar: 0,
-                    fiber: 0
+                    fiber: 0,
+                    quanti: 0
+                }
+            }
+            return items;
+
+        },
+
+        CheckForItem5: function () {
+            let items;
+            items = JSON.parse(localStorage.getItem('items'))
+            if (items.length > 5) {
+                items = {
+                    id: items[5][0].NEVO_code,
+                    name: items[5][0].Voedingsmiddelnaam,
+                    kj: (parseFloat(items[5][0].ENERCJ_kJ)),
+                    kcal: (parseFloat(items[5][0].ENERCC_kcal)),
+                    protien: (parseFloat(items[5][0].PROT_g)),
+                    fat: (parseFloat(items[5][0].FAT_g)),
+                    fasat: (parseFloat(items[5][0].FASAT_g)),
+                    sugar: (parseFloat(items[5][0].SUGAR_g)),
+                    fiber: (parseFloat(items[5][0].FIBT_g)),
+                    quanti: (parseFloat(items[5][0].quanti))
+                }
+            } else {
+                items = {
+                    id: '',
+                    name: '',
+                    kj: 0,
+                    kcal: 0,
+                    protien: 0,
+                    fat: 0,
+                    fasat: 0,
+                    sugar: 0,
+                    fiber: 0,
+                    quanti: 0
+                }
+            }
+            return items;
+
+        },
+
+        CheckForItem6: function () {
+            let items;
+            items = JSON.parse(localStorage.getItem('items'))
+            if (items.length > 6) {
+                items = {
+                    id: items[6][0].NEVO_code,
+                    name: items[6][0].Voedingsmiddelnaam,
+                    kj: (parseFloat(items[6][0].ENERCJ_kJ)),
+                    kcal: (parseFloat(items[6][0].ENERCC_kcal)),
+                    protien: (parseFloat(items[6][0].PROT_g)),
+                    fat: (parseFloat(items[6][0].FAT_g)),
+                    fasat: (parseFloat(items[6][0].FASAT_g)),
+                    sugar: (parseFloat(items[6][0].SUGAR_g)),
+                    fiber: (parseFloat(items[6][0].FIBT_g)),
+                    quanti: (parseFloat(items[6][0].quanti))
+                }
+            } else {
+                items = {
+                    id: '',
+                    name: '',
+                    kj: 0,
+                    kcal: 0,
+                    protien: 0,
+                    fat: 0,
+                    fasat: 0,
+                    sugar: 0,
+                    fiber: 0,
+                    quanti: 0
+                }
+            }
+            return items;
+
+        },
+
+        CheckForItem7: function () {
+            let items;
+            items = JSON.parse(localStorage.getItem('items'))
+            if (items.length > 7) {
+                items = {
+                    id: items[7][0].NEVO_code,
+                    name: items[7][0].Voedingsmiddelnaam,
+                    kj: (parseFloat(items[7][0].ENERCJ_kJ)),
+                    kcal: (parseFloat(items[7][0].ENERCC_kcal)),
+                    protien: (parseFloat(items[7][0].PROT_g)),
+                    fat: (parseFloat(items[7][0].FAT_g)),
+                    fasat: (parseFloat(items[7][0].FASAT_g)),
+                    sugar: (parseFloat(items[7][0].SUGAR_g)),
+                    fiber: (parseFloat(items[7][0].FIBT_g)),
+                    quanti: (parseFloat(items[7][0].quanti))
+                }
+            } else {
+                items = {
+                    id: '',
+                    name: '',
+                    kj: 0,
+                    kcal: 0,
+                    protien: 0,
+                    fat: 0,
+                    fasat: 0,
+                    sugar: 0,
+                    fiber: 0,
+                    quanti: 0
+                }
+            }
+            return items;
+
+        },
+
+        CheckForItem8: function () {
+            let items;
+            items = JSON.parse(localStorage.getItem('items'))
+            if (items.length > 8) {
+                items = {
+                    id: items[8][0].NEVO_code,
+                    name: items[8][0].Voedingsmiddelnaam,
+                    kj: (parseFloat(items[8][0].ENERCJ_kJ)),
+                    kcal: (parseFloat(items[8][0].ENERCC_kcal)),
+                    protien: (parseFloat(items[8][0].PROT_g)),
+                    fat: (parseFloat(items[8][0].FAT_g)),
+                    fasat: (parseFloat(items[8][0].FASAT_g)),
+                    sugar: (parseFloat(items[8][0].SUGAR_g)),
+                    fiber: (parseFloat(items[8][0].FIBT_g)),
+                    quanti: (parseFloat(items[8][0].quanti))
+                }
+            } else {
+                items = {
+                    id: '',
+                    name: '',
+                    kj: 0,
+                    kcal: 0,
+                    protien: 0,
+                    fat: 0,
+                    fasat: 0,
+                    sugar: 0,
+                    fiber: 0,
+                    quanti: 0
+                }
+            }
+            return items;
+
+        },
+
+        CheckForItem9: function () {
+            let items;
+            items = JSON.parse(localStorage.getItem('items'))
+            if (items.length > 9) {
+                items = {
+                    id: items[9][0].NEVO_code,
+                    name: items[9][0].Voedingsmiddelnaam,
+                    kj: (parseFloat(items[9][0].ENERCJ_kJ)),
+                    kcal: (parseFloat(items[9][0].ENERCC_kcal)),
+                    protien: (parseFloat(items[9][0].PROT_g)),
+                    fat: (parseFloat(items[9][0].FAT_g)),
+                    fasat: (parseFloat(items[9][0].FASAT_g)),
+                    sugar: (parseFloat(items[9][0].SUGAR_g)),
+                    fiber: (parseFloat(items[9][0].FIBT_g)),
+                    quanti: (parseFloat(items[9][0].quanti))
+                }
+            } else {
+                items = {
+                    id: '',
+                    name: '',
+                    kj: 0,
+                    kcal: 0,
+                    protien: 0,
+                    fat: 0,
+                    fasat: 0,
+                    sugar: 0,
+                    fiber: 0,
+                    quanti: 0
                 }
             }
             return items;
@@ -246,11 +426,16 @@ const ItemCtrl = (function (){
 
     const data = {
         items : [
-            {id : StorageCtrl.CheckForItem0().id, name:StorageCtrl.CheckForItem0().name, kcal: StorageCtrl.CheckForItem0().kcal},
-            {id : StorageCtrl.CheckForItem().id, name:StorageCtrl.CheckForItem().name, kcal: StorageCtrl.CheckForItem().kcal},
-            {id : StorageCtrl.CheckForItem2().id, name:StorageCtrl.CheckForItem2().name, kcal: StorageCtrl.CheckForItem2().kcal},
-            {id : StorageCtrl.CheckForItem3().id, name:StorageCtrl.CheckForItem3().name, kcal: StorageCtrl.CheckForItem3().kcal},
-            {id : StorageCtrl.CheckForItem4().id, name:StorageCtrl.CheckForItem4().name, kcal: StorageCtrl.CheckForItem4().kcal}
+            {id : StorageCtrl.CheckForItem0().id, name:StorageCtrl.CheckForItem0().name, kcal: (StorageCtrl.CheckForItem0().kcal * (StorageCtrl.CheckForItem0().quanti))},
+            {id : StorageCtrl.CheckForItem().id, name:StorageCtrl.CheckForItem().name, kcal: (StorageCtrl.CheckForItem().kcal * (StorageCtrl.CheckForItem().quanti))},
+            {id : StorageCtrl.CheckForItem2().id, name:StorageCtrl.CheckForItem2().name, kcal: (StorageCtrl.CheckForItem2().kcal * (StorageCtrl.CheckForItem2().quanti))},
+            {id : StorageCtrl.CheckForItem3().id, name:StorageCtrl.CheckForItem3().name, kcal: (StorageCtrl.CheckForItem3().kcal * (StorageCtrl.CheckForItem3().quanti))},
+            {id : StorageCtrl.CheckForItem4().id, name:StorageCtrl.CheckForItem4().name, kcal: (StorageCtrl.CheckForItem4().kcal * (StorageCtrl.CheckForItem4().quanti))},
+            {id : StorageCtrl.CheckForItem5().id, name:StorageCtrl.CheckForItem5().name, kcal: (StorageCtrl.CheckForItem5().kcal * (StorageCtrl.CheckForItem5().quanti))},
+            {id : StorageCtrl.CheckForItem6().id, name:StorageCtrl.CheckForItem6().name, kcal: (StorageCtrl.CheckForItem6().kcal * (StorageCtrl.CheckForItem6().quanti))},
+            {id : StorageCtrl.CheckForItem7().id, name:StorageCtrl.CheckForItem7().name, kcal: (StorageCtrl.CheckForItem7().kcal * (StorageCtrl.CheckForItem7().quanti))},
+            {id : StorageCtrl.CheckForItem8().id, name:StorageCtrl.CheckForItem8().name, kcal: (StorageCtrl.CheckForItem8().kcal * (StorageCtrl.CheckForItem8().quanti))},
+            {id : StorageCtrl.CheckForItem9().id, name:StorageCtrl.CheckForItem9().name, kcal: (StorageCtrl.CheckForItem9().kcal * (StorageCtrl.CheckForItem9().quanti))}
         ],
         //items: StorageCtrl.getItemsFromStorage(),
         currentItem: null,
@@ -362,7 +547,8 @@ const UICtrl = (function (){
     const UISelectors = {
         itemList: '#item-list',
         listItems: '#item-list li',
-        //addBtn: '.add-btn',
+        addBtn: '',
+        quantity: '#item-quantity',
         addBtn2: '.link',
         updateBtn: '.update-btn',
         deleteBtn: '.delete-btn',
@@ -383,7 +569,7 @@ const UICtrl = (function (){
                         <strong>${item.name}: </strong>
                         <em>${item.kcal} Calories</em>
                 <a href="#" class="secondary-content">
-                <i class = "edit-item">change</i>
+<!--                <i class = "edit-item">change</i>-->
                 </a>
                 </li>`;
             });
@@ -392,12 +578,22 @@ const UICtrl = (function (){
             document.querySelector(UISelectors.itemList).innerHTML=
                 html;
         },
-        getItemInput : function (){
+        getItemInput : function (Product){
+            // console.log(Product);
+            // let foodArry = Product;
+            // console.log(foodArry);
             return{
+
                 // name: document.querySelector(UISelectors.itemNameInput).value,
                 // calories: document.querySelector(UISelectors.itemCaloriesInput).value
 
+
+                // name: Product[0].Voedingsmiddelnaam,
+                // quantity: document.querySelector(UISelectors.quantity).value
             }
+            // quantity = document.querySelector(UISelectors.quantity).value
+            // return quantity
+
         },
         addListItem: function (item){
             // show list
@@ -472,23 +668,23 @@ const UICtrl = (function (){
             document.querySelector(UISelectors.totalCalories).textContent = totalCalories;
 
         },
-        clearEditState: function (){
-            UICtrl.clearInput();
-            document.querySelector(UISelectors.updateBtn).style.display = 'none';
-            document.querySelector(UISelectors.deleteBtn).style.display = 'none';
-            document.querySelector(UISelectors.backBtn).style.display = 'none';
-            // document.querySelector(UISelectors.addBtn).style.display = 'inline';
-        },
+        // clearEditState: function (){
+        //     UICtrl.clearInput();
+        //     document.querySelector(UISelectors.updateBtn).style.display = 'none';
+        //     document.querySelector(UISelectors.deleteBtn).style.display = 'none';
+        //     document.querySelector(UISelectors.backBtn).style.display = 'none';
+        //     // document.querySelector(UISelectors.addBtn).style.display = 'inline';
+        // },
+        //
+        // showEditState: function (){
+        //     document.querySelector(UISelectors.updateBtn).style.display = 'inline';
+        //     document.querySelector(UISelectors.deleteBtn).style.display = 'inline';
+        //     document.querySelector(UISelectors.backBtn).style.display = 'inline';
+        //     // document.querySelector(UISelectors.addBtn).style.display = 'none';
+        // },
 
-        showEditState: function (){
-            document.querySelector(UISelectors.updateBtn).style.display = 'inline';
-            document.querySelector(UISelectors.deleteBtn).style.display = 'inline';
-            document.querySelector(UISelectors.backBtn).style.display = 'inline';
-            // document.querySelector(UISelectors.addBtn).style.display = 'none';
-        },
 
-
-        getSelectors: function (){
+        getSelectors: function (product){
             return UISelectors;
         }
     }
@@ -498,11 +694,16 @@ const UICtrl = (function (){
 // App controller
 const App = (function (ItemCtrl, StorageCtrl, UICtrl){
     // load event listeners
-    const loadEventListeners = function (){
+    const loadEventListeners = function (product){
         // get UI selectors
+
+
+        // let foodobject = product[0].Voedingsmiddelnaam
+        // console.log(foodobject);
         const UISelectors = UICtrl.getSelectors();
 
         // Add item event
+
 
         // document.querySelector(UISelectors.addBtn).addEventListener('click', itemAddSubmit);
 
@@ -517,14 +718,14 @@ const App = (function (ItemCtrl, StorageCtrl, UICtrl){
         // edit change event
         document.querySelector(UISelectors.itemList).addEventListener('click', itemEditClick);
 
-        // update item event
-        document.querySelector(UISelectors.updateBtn).addEventListener('click', itemUpdateSubmit);
-
-        // delete item event
-        document.querySelector(UISelectors.deleteBtn).addEventListener('click', itemDeleteSubmit);
-
-        // back button event
-        document.querySelector(UISelectors.backBtn).addEventListener('click', UICtrl.clearEditState);
+        // // update item event
+        // document.querySelector(UISelectors.updateBtn).addEventListener('click', itemUpdateSubmit);
+        //
+        // // delete item event
+        // document.querySelector(UISelectors.deleteBtn).addEventListener('click', itemDeleteSubmit);
+        //
+        // // back button event
+        // document.querySelector(UISelectors.backBtn).addEventListener('click', UICtrl.clearEditState);
 
         // clear item event
         document.querySelector(UISelectors.clearBtn).addEventListener('click', clearAllItemsClick);
@@ -537,29 +738,29 @@ const App = (function (ItemCtrl, StorageCtrl, UICtrl){
     const itemAddSubmit = function (e){
         // get form ip
         const input = UICtrl.getItemInput();
-        let number = 0;
-        console.log(number);
+
+        console.log(input);
 
         // check for name and calorie input
-        if (input.name !== '' && input.calories !== ''){
-            // add item
-            const newItem = ItemCtrl.addItem(input.name, input.calories);
-            // Add item to Ui list
-            UICtrl.addListItem(newItem);
-
-            // Get total calories
-            const totalCalories = ItemCtrl.getTotalCalories();
-            // add total calories to ui
-            UICtrl.showTotalCalories(totalCalories);
-
-            // Store local storage
-            StorageCtrl.storeItem(newItem);
-
-            // Clear fields
-            UICtrl.clearInput();
-
-
-        }
+        // if (input.name !== '' && input.calories !== ''){
+        //     // add item
+        //     const newItem = ItemCtrl.addItem(input.name, input.calories);
+        //     // Add item to Ui list
+        //     UICtrl.addListItem(newItem);
+        //
+        //     // Get total calories
+        //     const totalCalories = ItemCtrl.getTotalCalories();
+        //     // add total calories to ui
+        //     UICtrl.showTotalCalories(totalCalories);
+        //
+        //     // Store local storage
+        //     StorageCtrl.storeItem(newItem);
+        //
+        //     // Clear fields
+        //     UICtrl.clearInput();
+        //
+        //
+        // }
 
         e.preventDefault();
     }
@@ -635,7 +836,7 @@ const App = (function (ItemCtrl, StorageCtrl, UICtrl){
         // Delete from local storage
         StorageCtrl.deleteItemFromStorage(currentItem.id);
 
-        UICtrl.clearEditState();
+        // UICtrl.clearEditState();
 
         e.preventDefault();
     }
@@ -661,10 +862,10 @@ const App = (function (ItemCtrl, StorageCtrl, UICtrl){
 
     // Public Methods
     return{
-        init: function (){
+        init: function (Product){
 
             // CLEAR edit state
-            UICtrl.clearEditState();
+            // UICtrl.clearEditState();
 
             // Fetch items from data structure
             const items = ItemCtrl.getItems();
@@ -684,9 +885,11 @@ const App = (function (ItemCtrl, StorageCtrl, UICtrl){
 
 
             // load event listeners
-            loadEventListeners();
+            loadEventListeners(Product);
+
 
         }
+
     }
 
 })(ItemCtrl,StorageCtrl,UICtrl);
