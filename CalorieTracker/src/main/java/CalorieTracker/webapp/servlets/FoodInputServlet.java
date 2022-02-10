@@ -31,7 +31,6 @@ public class FoodInputServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException{
-
         System.out.println("GET request for /food_input is executed");
         process(request, response);
     }
@@ -41,6 +40,7 @@ public class FoodInputServlet extends HttpServlet {
 
         System.out.println("POST request for /food_input is executed");
 
+        //commented out this function because storage is done now via local storage
         /*try {
                 // Connect to the database
                 Connection con = Validate.DBConnect();

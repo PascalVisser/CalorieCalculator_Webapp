@@ -37,9 +37,11 @@ public class WelcomeServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
+        // Get username and password form the form
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
+        //Gain access if true
         try {
             Connection conn = Validate.DBConnect();
             if (Validate.CheckUser(username, password, conn)) {

@@ -29,13 +29,13 @@ public class TrackerServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.out.println("POST request for /tracker is executed");
 
-
-        try {
+        // code for deleting records of database, also not implemented at the moment
+        /* try {
             String delete_check = request.getParameter("delete");
             EmptyDB.EmptyDatabase(delete_check);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
-        }
+        } */
 
         process(request, response);
     }
