@@ -54,7 +54,7 @@ async function parseProductNames() {
  */
 async function parseProducts() {
     let data = await recordsPromise;
-    let records = data
+    return data
         .split('\n')
         .map(record => {
             let elements = record.split(';');
@@ -78,7 +78,6 @@ async function parseProducts() {
                 FIBT_g: elements[30],
             }
         });
-    return records;
 }
 /**
  * Given a search query and a data set, finds matching food names
@@ -98,11 +97,11 @@ function findMatchingOrganism(e) {
                 // Find the first 20 matches. every() runs as long as true is returned
                 records.every(record => {
                     // Compare case-insensitive by transforming to all lower case
-                    if (record.name.toLowerCase().indexOf(query.toLowerCase()) != -1) {
+                    if (record.name.toLowerCase().indexOf(query.toLowerCase()) !== -1) {
                         matches.push(record);
                     }
                     // TODO: this limits to 20 shown products
-                    return matches.length >= 5 ? false : true;
+                    return matches.length < 5;
                 })
                 displayMatches(matches, query);
             })
@@ -151,7 +150,7 @@ function fetchDetails(productId) {
     console.log(productId);
     productDetails
         .then(products => {
-            const product = products.filter(p => p.NEVO_code == productId);
+            const product = products.filter(p => p.NEVO_code === productId);
             console.log(product);
             showDetails(product);
         })
