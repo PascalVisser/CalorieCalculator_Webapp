@@ -18,7 +18,9 @@
             href="../../css/style.css"
     />
 </head>
+
 <body>
+<!-- Set navigation bar -->
 <section>
     <div th:fragment="background">
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
@@ -48,16 +50,19 @@
         </nav>
     </div>
 </section>
+<!-- Set background -->
 <section>
     <div class="Bg-image">
         <img th:src="@{/images/food-background.jpeg}" src="../../images/food-background.jpeg" alt="background pic" style="width:100%;">
         <div class="Bg-overlay">
+
+            <!-- Set background -->
             <p>
                 This is the login page.<br>
                 Here you can log in to gain access to the Calorie Tracker web app.
             </p><br>
 
-
+            <!-- Form for login -->
             <form method="POST">
 
                 <label for="user">Username:</label>
@@ -74,9 +79,14 @@
 
         </div>
     </div>
+
 </section>
 
 <script type="text/javascript" th:inline="javascript">
+
+    /**
+     * show password function
+     */
     function showPassword() {
         const x = document.getElementById("psw");
         if (x.type === "password") {
