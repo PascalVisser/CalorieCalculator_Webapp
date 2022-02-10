@@ -21,6 +21,7 @@
 </head>
 
 <body>
+<!-- Set navigation bar -->
 <section>
     <div th:fragment="background">
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
@@ -54,18 +55,20 @@
         </nav>
     </div>
 </section>
-
+<!-- Set background -->
 <section>
     <div class="Bg-image">
         <img th:src="@{/images/food-background.jpeg}" src="../../images/food-background.jpeg" alt="background pic" style="width:100%;">
         <div class="Bg-overlay">
             <div class="container" style="text-align:center">
+
                 <p>
                     Here you can put in the consumed food. The food is per 100 grams.
                 </p>
                 <!-- Note: only provides an input field, no button needed -->
                 <div class="row">
 
+                    <!-- Form for inputting food -->
                     <form id="organism" autocomplete="off" method="post" th:action="@{food_input}">
                         <div class="input-field col s6">
                             <input type="number" required size="1" placeholder="add quantity" id="item-quantity">
@@ -199,11 +202,11 @@
                     // Find the first 20 matches. every() runs as long as true is returned
                     records.every(record => {
                         // Compare case-insensitive by transforming to all lower case
-                        if (record.name.toLowerCase().indexOf(query.toLowerCase()) != -1) {
+                        if (record.name.toLowerCase().indexOf(query.toLowerCase()) !== -1) {
                             matches.push(record);
                         }
                         // TODO: this limits to 20 shown products
-                        return matches.length >= 5 ? false : true;
+                        return matches.length < 5;
                     })
                     displayMatches(matches, query);
                 })
@@ -251,7 +254,7 @@
      */
     function fetchDetails(productId) {
         productDetails.then(products => {
-            const product = products.filter(p => p.NEVO_code == productId);
+            const product = products.filter(p => p.NEVO_code === productId);
 
             showDetails(product);
         })
