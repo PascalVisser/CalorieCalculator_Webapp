@@ -1,3 +1,9 @@
+/**
+ * Script for Validate a user with a given username and password
+ * @author Pascal Visser
+ * @version 1.0
+ */
+
 package CalorieTracker.webapp.Database_IC;
 
 import java.sql.*;
@@ -19,14 +25,17 @@ public class Validate {
 
         System.out.println("Connected to the database!");
 
+        //return connection as object
         return conn;
     }
 
     public static boolean CheckUser (String username, String password,
                                      Connection connect) throws SQLException {
 
+        //set check variable
         boolean userValid = false;
 
+        //check username and password match records of the database
         PreparedStatement ps = connect.prepareStatement
                 ("select * from userdetails where Username=? and Password=?");
 
