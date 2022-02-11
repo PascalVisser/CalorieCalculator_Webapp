@@ -94,9 +94,6 @@
                     </div>
                 </div>
                 <span class="card-title"> Your list of food items</span>
-                <!-- calories count -->
-                <h3 class="center-align">Total Calories: <span
-                        class="total-calories">0</span></h3>
                 <ul id="item-list" class="collection">
 
                 </ul>
@@ -109,8 +106,9 @@
     </div>
 </section>
 
-<script>
 
+<script>
+    // script was necessary because weird error with Appache error
     // Selectors
     let source = document.querySelector('#orgname');
     let taxTarget = document.querySelector("#taxTarget");
@@ -130,7 +128,6 @@
      * @returns {Promise(Array)} of objects with taxonomic data
      */
     async function getTaxData()  {
-        // TODO: place the 'nevodb.csv' file in i.e. a /webapp/data folder and change the path correctly: '/data/nevodb.csv'
         let response = await fetch("../../csvfiles/nevodb.csv");
         let records = await response.text();
         // Returns a Promise
@@ -202,11 +199,11 @@
                     // Find the first 20 matches. every() runs as long as true is returned
                     records.every(record => {
                         // Compare case-insensitive by transforming to all lower case
-                        if (record.name.toLowerCase().indexOf(query.toLowerCase()) !== -1) {
+                        if (record.name.toLowerCase().indexOf(query.toLowerCase()) != -1) {
                             matches.push(record);
                         }
                         // TODO: this limits to 20 shown products
-                        return matches.length < 5;
+                        return matches.length >= 5 ? false: true;
                     })
                     displayMatches(matches, query);
                 })
@@ -254,7 +251,7 @@
      */
     function fetchDetails(productId) {
         productDetails.then(products => {
-            const product = products.filter(p => p.NEVO_code === productId);
+            const product = products.filter(p => p.NEVO_code == productId);
 
             showDetails(product);
         })
@@ -267,41 +264,29 @@
     function showDetails(details) {
         // Clear search results
         taxTarget.innerHTML = details[0].Voedingsmiddelnaam;
-        // TODO: present the required fields in i.e. a table, providing an option to enter the amount
 
+
+        // Retrieving the details object with all the nutrition values so the quantity can be added
         let results = details[0];
         let foodQuantity = quantity.value;
         Object.assign(results, {quanti: foodQuantity});
+        console.log(results);
 
-        let detailsWithquanti = [];
-        detailsWithquanti.push(results);
-
-
-        // details.push(foodtestquantity);
-        // console.log(details);
-
-        // detailTarget.innerHTML = `<h4>Product Details</h4><hr/><pre>${JSON.stringify(details[0].Voedingsmiddelnaam, null, 2)}</pre>`;
-
-        // Show the details does not have any extra value
-        // detailTarget.innerHTML = `<h4>Product Details</h4><hr/><pre>${JSON.stringify(details)}</pre>`;
-
-        // UICtrl.getItemInput(details);
-        // App.init(details);
-
-        let items;
+        let items = [];
         // check if any items in ls
         if (localStorage.getItem('items') === null){
             items = [];
             // push new item
-            items.push(detailsWithquanti);
+            items.push(results);
             // set ls
-            localStorage.setItem('items', JSON.stringify(detailsWithquanti));
+            localStorage.setItem('items', JSON.stringify(items));
         } else {
             // Get all from ls
             items = JSON.parse(localStorage.getItem('items'));
 
+
             // Push new item
-            items.push(detailsWithquanti);
+            items.push(results);
 
             // reset ls
             localStorage.setItem('items', JSON.stringify(items));
