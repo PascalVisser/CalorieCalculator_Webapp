@@ -83,78 +83,34 @@
 
 <script>
     // charts
-    console.log(StorageCtrl.CheckForItem());
+    // getting the items from the local storage
     const json = localStorage.getItem('items');
     const parseJson = JSON.parse(json);
+
+    // setting all the variables
+    let Protein = 0;
+    let Fat = 0;
+    let FatSat = 0;
+    let sugar = 0;
+    let Fiber = 0;
+    let kcal = 0;
+    let kj = 0;
+
+    // adding all the items from the local storage to there variables
+    parseJson.forEach(function (item){
+        Protein += parseFloat(item.PROT_g) * parseFloat(item.quanti);
+        Fat += parseFloat(item.FAT_g) * parseFloat(item.quanti);
+        FatSat += parseFloat(item.FASAT_g) * parseFloat(item.quanti);
+        sugar += parseFloat(item.SUGAR_g) * parseFloat(item.quanti);
+        Fiber += parseFloat(item.FIBT_g) * parseFloat(item.quanti);
+        kcal += parseFloat(item.ENERCC_kcal) * parseFloat(item.quanti);
+        kj += parseFloat(item.ENERCJ_kJ) * parseFloat(item.quanti);
+    });
 
     let myChart1 = document.getElementById('myChart').getContext('2d');
 
     let labels = ['protein (g)', 'fat (g)', 'SaternadedFat (g)', 'sugar (g)', 'fiber (g)'];
-
     let colorHex = ['#FB3640', '#EFCA08', '#43AA8B', '#253D5B', '#F033FF', '#060606', '#FFFFFF']
-
-    let Protein =
-        StorageCtrl.CheckForItem0().protien * (StorageCtrl.CheckForItem0().quanti) +
-        StorageCtrl.CheckForItem().protien * (StorageCtrl.CheckForItem().quanti) +
-        StorageCtrl.CheckForItem2().protien * (StorageCtrl.CheckForItem2().quanti) +
-        StorageCtrl.CheckForItem3().protien * (StorageCtrl.CheckForItem3().quanti) +
-        StorageCtrl.CheckForItem4().protien * (StorageCtrl.CheckForItem4().quanti) +
-        StorageCtrl.CheckForItem5().protien * (StorageCtrl.CheckForItem5().quanti) +
-        StorageCtrl.CheckForItem6().protien * (StorageCtrl.CheckForItem6().quanti) +
-        StorageCtrl.CheckForItem7().protien * (StorageCtrl.CheckForItem7().quanti) +
-        StorageCtrl.CheckForItem8().protien * (StorageCtrl.CheckForItem8().quanti) +
-        StorageCtrl.CheckForItem9().protien * (StorageCtrl.CheckForItem9().quanti) ;
-
-
-    let Fat =
-        StorageCtrl.CheckForItem0().fat * (StorageCtrl.CheckForItem0().quanti)+
-        StorageCtrl.CheckForItem().fat * (StorageCtrl.CheckForItem().quanti)+
-        StorageCtrl.CheckForItem2().fat * (StorageCtrl.CheckForItem2().quanti)+
-        StorageCtrl.CheckForItem3().fat * (StorageCtrl.CheckForItem3().quanti)+
-        StorageCtrl.CheckForItem4().fat * (StorageCtrl.CheckForItem4().quanti)+
-        StorageCtrl.CheckForItem5().fat * (StorageCtrl.CheckForItem5().quanti)+
-        StorageCtrl.CheckForItem6().fat * (StorageCtrl.CheckForItem6().quanti)+
-        StorageCtrl.CheckForItem7().fat * (StorageCtrl.CheckForItem7().quanti)+
-        StorageCtrl.CheckForItem8().fat * (StorageCtrl.CheckForItem8().quanti)+
-        StorageCtrl.CheckForItem9().fat * (StorageCtrl.CheckForItem9().quanti);
-
-    let FatSat =
-        StorageCtrl.CheckForItem0().fasat * (StorageCtrl.CheckForItem0().quanti)+
-        StorageCtrl.CheckForItem().fasat * (StorageCtrl.CheckForItem().quanti)+
-        StorageCtrl.CheckForItem2().fasat * (StorageCtrl.CheckForItem2().quanti)+
-        StorageCtrl.CheckForItem3().fasat * (StorageCtrl.CheckForItem3().quanti)+
-        StorageCtrl.CheckForItem4().fasat * (StorageCtrl.CheckForItem4().quanti) +
-        StorageCtrl.CheckForItem5().fasat * (StorageCtrl.CheckForItem5().quanti)+
-        StorageCtrl.CheckForItem6().fasat * (StorageCtrl.CheckForItem6().quanti)+
-        StorageCtrl.CheckForItem7().fasat * (StorageCtrl.CheckForItem7().quanti)+
-        StorageCtrl.CheckForItem8().fasat * (StorageCtrl.CheckForItem8().quanti)+
-        StorageCtrl.CheckForItem9().fasat * (StorageCtrl.CheckForItem9().quanti);
-
-    let sugar =
-        StorageCtrl.CheckForItem0().sugar * (StorageCtrl.CheckForItem0().quanti)+
-        StorageCtrl.CheckForItem().sugar * (StorageCtrl.CheckForItem().quanti)+
-        StorageCtrl.CheckForItem2().sugar * (StorageCtrl.CheckForItem2().quanti)+
-        StorageCtrl.CheckForItem3().sugar * (StorageCtrl.CheckForItem3().quanti)+
-        StorageCtrl.CheckForItem4().sugar * (StorageCtrl.CheckForItem4().quanti)+
-        StorageCtrl.CheckForItem5().sugar * (StorageCtrl.CheckForItem5().quanti)+
-        StorageCtrl.CheckForItem6().sugar * (StorageCtrl.CheckForItem6().quanti)+
-        StorageCtrl.CheckForItem7().sugar * (StorageCtrl.CheckForItem7().quanti)+
-        StorageCtrl.CheckForItem8().sugar * (StorageCtrl.CheckForItem8().quanti)+
-        StorageCtrl.CheckForItem9().sugar * (StorageCtrl.CheckForItem9().quanti);
-
-
-    let Fiber =
-        StorageCtrl.CheckForItem0().fiber * (StorageCtrl.CheckForItem0().quanti)+
-        StorageCtrl.CheckForItem().fiber * (StorageCtrl.CheckForItem().quanti)+
-        StorageCtrl.CheckForItem2().fiber * (StorageCtrl.CheckForItem2().quanti)+
-        StorageCtrl.CheckForItem3().fiber * (StorageCtrl.CheckForItem3().quanti)+
-        StorageCtrl.CheckForItem4().fiber * (StorageCtrl.CheckForItem4().quanti)+
-        StorageCtrl.CheckForItem5().fiber * (StorageCtrl.CheckForItem5().quanti)+
-        StorageCtrl.CheckForItem6().fiber * (StorageCtrl.CheckForItem6().quanti)+
-        StorageCtrl.CheckForItem7().fiber * (StorageCtrl.CheckForItem7().quanti)+
-        StorageCtrl.CheckForItem8().fiber * (StorageCtrl.CheckForItem8().quanti)+
-        StorageCtrl.CheckForItem9().fiber * (StorageCtrl.CheckForItem9().quanti);
-
 
     let chart1 = new Chart(myChart1, {
         type: 'pie',
@@ -177,36 +133,13 @@
     let labels2 = ['Kcal','kJ'];
     let colorHex2 = ['#FB3640', '#EFCA08']
 
-    let kcal =
-        StorageCtrl.CheckForItem0().kcal * (StorageCtrl.CheckForItem0().quanti) +
-        StorageCtrl.CheckForItem().kcal * (StorageCtrl.CheckForItem().quanti) +
-        StorageCtrl.CheckForItem2().kcal * (StorageCtrl.CheckForItem2().quanti) +
-        StorageCtrl.CheckForItem3().kcal * (StorageCtrl.CheckForItem3().quanti) +
-        StorageCtrl.CheckForItem4().kcal * (StorageCtrl.CheckForItem4().quanti)+
-        StorageCtrl.CheckForItem5().kcal * (StorageCtrl.CheckForItem5().quanti) +
-        StorageCtrl.CheckForItem6().kcal * (StorageCtrl.CheckForItem6().quanti) +
-        StorageCtrl.CheckForItem7().kcal * (StorageCtrl.CheckForItem7().quanti) +
-        StorageCtrl.CheckForItem8().kcal * (StorageCtrl.CheckForItem8().quanti) +
-        StorageCtrl.CheckForItem9().kcal * (StorageCtrl.CheckForItem9().quanti);
-
-    let kJ =
-        StorageCtrl.CheckForItem0().kj * (StorageCtrl.CheckForItem0().quanti)+
-        StorageCtrl.CheckForItem().kj * (StorageCtrl.CheckForItem().quanti) +
-        StorageCtrl.CheckForItem2().kj * (StorageCtrl.CheckForItem2().quanti)+
-        StorageCtrl.CheckForItem3().kj * (StorageCtrl.CheckForItem3().quanti)+
-        StorageCtrl.CheckForItem4().kj * (StorageCtrl.CheckForItem4().quanti)+
-        StorageCtrl.CheckForItem5().kj * (StorageCtrl.CheckForItem5().quanti)+
-        StorageCtrl.CheckForItem6().kj * (StorageCtrl.CheckForItem6().quanti) +
-        StorageCtrl.CheckForItem7().kj * (StorageCtrl.CheckForItem7().quanti)+
-        StorageCtrl.CheckForItem8().kj * (StorageCtrl.CheckForItem8().quanti)+
-        StorageCtrl.CheckForItem9().kj * (StorageCtrl.CheckForItem9().quanti);
 
     let chart2 = new Chart(myChart2, {
         type: 'pie',
         data: {
             labels: labels2,
             datasets: [{
-                data: [kcal, kJ],
+                data: [kcal, kj],
                 backgroundColor : colorHex2
             }],
         },
