@@ -18,9 +18,9 @@ public class Validate {
         Class.forName("com.mysql.cj.jdbc.Driver");
 
         //creating connection with the database
-        String url = "jdbc:mysql://@localhost:2222/calories";
-        String DBUser = "calories";
-        String DBPassword = "7w42c3hAqkDV";
+        String url = //see my.cnf;
+        String DBUser = //see my.cnf;
+        String DBPassword = //see my.cnf;
         conn = DriverManager.getConnection(url, DBUser, DBPassword);
 
         System.out.println("Connected to the database!");
