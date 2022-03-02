@@ -55,32 +55,6 @@ The minimum requirement for Java = JDK 14+
 
 
 
-# Database Tunnel:
-
-The web app makes usage of a remote database from storage and login. To access the database the following steps need to be made:
-
-Windows:
-
-- Download MobaXtrem installer edition 
-- Click Tunneling button
-- Set Local clients to 2222
-- set SSH server to bioinf.nl, 'binusername', 4235
-- Set Remote server to webprojectsdb.bin.bioinf.nl, 3306
-- Click on Save
-
-MACos/Linux:
-
-In the terminal
-
-- ssh -N -L 2222:webprojectsdb.bin.bioinf.nl:3306 username@bioinf.nl -p 4235
-- mysql -h 127.0.0.1 -P 2222 -u calories -p calories
-
-With no errors or messages, it is good. 
-
-This tunnel needs to be open before running the web app, otherwise the database interaction will fail. 
-
-
-
 
 # Possible issues:
 
